@@ -1,0 +1,122 @@
+{
+  "totalProfit": {
+    "totalProfit": 1012.5
+  },
+  "positions": [
+    {
+      "name": "USDINR Apr Iron Condor",
+      "spot": "USDINR",
+      "type": "Iron Condor",
+      "capital": 150000,
+      "positionProfit": 1012.5,
+      "contracts": [
+        {
+          "type": "CE",
+          "leg": "Initial Position",
+          "strike": 78,
+          "expiry": "28-04-2020",
+          "side": "short",
+          "lots": 15,
+          "lotSize": 1000,
+          "contractProfit": 1050,
+          "trades": [
+            {
+              "side": "sell",
+              "lots": 15,
+              "averagePrice": 0.075,
+              "date": "17-04-2020"
+            },
+            {
+              "side": "buy",
+              "lots": 15,
+              "averagePrice": 0.005,
+              "date": "23-04-2020"
+            }
+          ]
+        },
+        {
+          "type": "CE",
+          "leg": "Initial Position",
+          "strike": 78.5,
+          "expiry": "28-04-2020",
+          "side": "long",
+          "lots": 15,
+          "sellAverage": null,
+          "buyAverage": 0.0375,
+          "sellDate": null,
+          "buyDate": "17-04-2020",
+          "lotSize": 1000,
+          "notes": "Couldn't square off during adjustment due to illiquidiy."
+        },
+        {
+          "type": "PE",
+          "leg": "Initial Position",
+          "strike": 76,
+          "expiry": "28-04-2020",
+          "side": "short",
+          "lots": 15,
+          "sellAverage": 0.1875,
+          "buyAverage": null,
+          "sellDate": "17-04-2020",
+          "buyDate": null,
+          "lotSize": 1000
+        },
+        {
+          "type": "PE",
+          "leg": "Initial Position",
+          "strike": 75.5,
+          "expiry": "28-04-2020",
+          "side": "long",
+          "lots": 15,
+          "sellAverage": null,
+          "buyAverage": 0.085,
+          "sellDate": null,
+          "buyDate": "17-04-2020",
+          "lotSize": 1000
+        },
+        {
+          "type": "CE",
+          "leg": "Adjustment",
+          "strike": 77,
+          "expiry": "28-04-2020",
+          "side": "short",
+          "lots": 15,
+          "sellAverage": 0.04,
+          "buyAverage": null,
+          "sellDate": "23-04-2020",
+          "buyDate": null,
+          "lotSize": 1000
+        },
+        {
+          "type": "CE",
+          "leg": "Adjustment",
+          "strike": 77.5,
+          "expiry": "28-04-2020",
+          "side": "long",
+          "lots": 15,
+          "sellAverage": null,
+          "buyAverage": 0.0125,
+          "sellDate": null,
+          "buyDate": "23-04-2020",
+          "lotSize": 1000
+        },
+        {
+          "type": "CE",
+          "leg": "Placed by mistake",
+          "strike": 77,
+          "expiry": "28-04-2020",
+          "side": "short",
+          "lots": 15,
+          "sellAverage": 0.04,
+          "buyAverage": 0.0425,
+          "sellDate": "23-04-2020",
+          "buyDate": "23-04-2020",
+          "lotSize": 1000,
+          "notes": "Placed by mistake. Squared off immediately.",
+          "contractProfit": -37.5
+        }
+      ],
+      "id": 1
+    }
+  ]
+}
