@@ -9,24 +9,41 @@ class Positions extends React.Component{
         super(props);
 
         this.state= {
-            expandAll: false
+            expandAll: true,
+            openPositionsOnly: false
         };
     }
 
-    handleExpandAllChange= () => {
+    handleExpandAllToggle= () => {
         let expandAll= !this.state.expandAll;
         this.setState({expandAll});
     }
 
-    render(){
-        return (
-            <div>
-                <Checkbox style={{marginBottom:'30px'}} 
-                label={this.state.expandAll?'Collapse all':'Expand all'}
-                toggle checked={this.state.expandAll} onChange={this.handleExpandAllChange} />
+    handleOpenPositionsToggle= () => {
+        let openPositionsOnly= !this.state.openPositionsOnly;
+        this.setState({openPositionsOnly});
+    }
 
-                {this.props.positions.map((position) => <Position position={position} expandAll={this.state.expandAll}></Position>)}
-            </div>
+    render(){
+        let applyPositionFilters= (position) => {
+            if(this.state.openPositionsOnly=== true)
+                return position.isOpen;
+            else
+                return true;
+        };
+
+        return (
+            <>
+                <div style={{display: 'flex', justifyContent: 'flex-end', marginBottom: 20}}>
+                    <Checkbox style={{marginRight: 12}} label='Open positions only' toggle checked={this.state.openPositionsOnly} onChange={this.handleOpenPositionsToggle} />
+                    <Checkbox label={this.state.expandAll?'Collapse all':'Expand all'} toggle checked={this.state.expandAll} onChange={this.handleExpandAllToggle} />
+                </div>
+
+                {this.props.positions
+                    .filter(applyPositionFilters)
+                    .map((position) => <Position position={position} expandAll={this.state.expandAll}></Position>)
+                }
+            </>
         );
     }
 }

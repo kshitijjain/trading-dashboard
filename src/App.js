@@ -1,8 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import Positions from './components/Positions';
-
 import './App.css';
+
+let positions= require('./data.json').positions;
 
 class App extends React.Component{
   constructor(props){
@@ -22,17 +23,19 @@ class App extends React.Component{
   }
 
   fetchJsonData= async () => {
-    let {status, data}= await axios.get('http://localhost:3001/db');
-    if(status=== 200){
-      this.setState({positions: data.positions});
-    }
+    // let {status, data}= await axios.get('http://192.168.0.26:3001/db');
+    // if(status=== 200){
+    //   this.setState({positions: data.positions});
+    // }
+
+    this.setState({positions});
   }
 
   render= () => {
     let {positions}= this.state;
 
     return (
-      <div style={{margin:'80px'}}>
+      <div style={{width:'80%', marginLeft: '10%', marginTop: 20}}>
         <Positions positions= {positions} refreshJsonData={this.refreshJsonData} />
       </div>
     );
