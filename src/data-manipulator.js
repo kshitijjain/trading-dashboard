@@ -32,7 +32,7 @@ let dataManipulator= async () => {
         }
         position.positionProfit= positionProfit;
         position.positionProfitPercentage= positionProfit*100/position.capital;
-        position.isOpen= isPositionOpen;
+        if(isPositionOpen) position.isOpen= true; else delete position.isOpen;
         totalProfit+= positionProfit;
         await axios.put(`http://localhost:3001/positions/${position.id}`, position);
         console.log(`Position profit save successfully for #${position.id} ${position.name}`);

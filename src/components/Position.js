@@ -10,13 +10,13 @@ class Position extends React.Component{
         super(props);
 
         this.state= {
-            isAccordianOpen: true
+            isAccordianOpen: false
         }
     }
 
     componentDidMount(){
         this.setState({
-            isAccordianOpen: this.props.expandAll
+            isAccordianOpen: this.props.position.isOpen
         });
     }
 

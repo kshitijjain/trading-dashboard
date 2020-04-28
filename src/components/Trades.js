@@ -10,7 +10,7 @@ class Trades extends React.Component{
         return (
             <Modal open={showTrades} onClose={hideTrades}>
                 <Modal.Content>
-                    {trades.map(trade => <Trade trade={trade} />)}
+                    {trades.map((trade, index) => <Trade key={index} trade={trade} />)}
                 </Modal.Content>
             </Modal>
         );

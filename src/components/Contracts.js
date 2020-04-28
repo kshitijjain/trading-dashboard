@@ -7,8 +7,6 @@ class Contracts extends React.Component{
     render(){
         let {contracts}= this.props;
 
-        console.log('contracts is', contracts);
-
         return (
             <Table singleLine celled selectable style={{width:'90%', marginLeft:'5%', marginTop:'10px',marginBottom:'10px', border: '1px solid'}}>
                 <Table.Header>
@@ -21,7 +19,7 @@ class Contracts extends React.Component{
                 </Table.Header>
 
                 <Table.Body>
-                    {contracts.map(contract => <Contract contract={contract} />)}
+                    {contracts.map((contract, index) => <Contract key={index} contract={contract} />)}
                 </Table.Body>
             </Table>
         );

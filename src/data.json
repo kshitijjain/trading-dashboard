@@ -171,8 +171,7 @@
         }
       ],
       "id": 1,
-      "positionProfitPercentage": 1.6,
-      "isOpen": false
+      "positionProfitPercentage": 1.6
     },
     {
       "name": "USDINR May Iron Condor",
