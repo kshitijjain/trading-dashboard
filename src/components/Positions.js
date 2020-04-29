@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Checkbox,Dropdown } from 'semantic-ui-react';
+import {Checkbox, Dropdown, Button, Label} from 'semantic-ui-react';
 
 import Position from './Position';
 import spots from '../constants/spots.json';
@@ -12,7 +12,8 @@ class Positions extends React.Component{
         this.state= {
             expandAll: false,
             openPositionsOnly: false,
-            selectedSpotList: []
+            selectedSpotList: [],
+            profitLossFilterValue: 'all'
         };
     }
 
@@ -30,19 +31,13 @@ class Positions extends React.Component{
         this.setState({selectedSpotList});
     }
 
+    handleProfitLossFilter= (profitLossFilterValue) => {
+        this.setState({profitLossFilterValue});
+    };
+
     render(){
         let {positions}= this.props;
-        let {selectedSpotList, openPositionsOnly}= this.state;
-
-        let applyPositionFilters= (position) => {
-            if(selectedSpotList.length=== 0 || selectedSpotList.includes(position.spot)){
-                if(openPositionsOnly=== true)
-                    return position.isOpen;
-                else
-                    return true;
-            }
-            else return false;
-        };
+        let {selectedSpotList, openPositionsOnly, profitLossFilterValue}= this.state;
 
         let spotList= () => (
             spots.map(spot => ({
@@ -52,16 +47,59 @@ class Positions extends React.Component{
             }))
         );
 
+        let applyPositionFilters= (position) => {
+            let openPositionFilter= () => openPositionsOnly?position.isOpen:true;
+            let spotFilter= () => (selectedSpotList.length=== 0 || selectedSpotList.includes(position.spot));
+            let profitLossFilter= () => (profitLossFilterValue==='all'?true:(profitLossFilterValue=== 'profitable'?position.positionProfit>=0:position.positionProfit<=0));
+
+            return openPositionFilter() && spotFilter() && profitLossFilter();
+        };
+
+        let filteredPositions= positions.filter(applyPositionFilters);
+        // let totalProfit= filteredPositions.reduce((total, position) => total+position.positionProfit, 0);
+
+        let {totalProfit, realizedProfit, unrealizedProfit}= filteredPositions.reduce(({totalProfit, realizedProfit, unrealizedProfit}, position) => {
+            totalProfit+=position.positionProfit;
+            if(position.isOpen) unrealizedProfit+= position.positionProfit;
+            else realizedProfit+= position.positionProfit;
+            return {totalProfit, realizedProfit, unrealizedProfit};
+        }, {totalProfit: 0, realizedProfit: 0, unrealizedProfit: 0});
+
         return (
             <>
-                <div style={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: 20}}>
+                <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: 20}}>
+                    <Button.Group style={{marginRight: 12}}>
+                        <Button toggle active={profitLossFilterValue=== 'all'} onClick={() => this.handleProfitLossFilter('all')}>All</Button>
+                        <Button.Or />
+                        <Button toggle active={profitLossFilterValue=== 'profitable'} onClick={() => this.handleProfitLossFilter('profitable')}>Profitable only</Button>
+                        <Button.Or />
+                        <Button toggle active={profitLossFilterValue=== 'lossMaking'} onClick={() => this.handleProfitLossFilter('lossMaking')}>Loss making only</Button>
+                    </Button.Group>
+
                     <Dropdown style={{marginRight: 12}} placeholder='Underlying' multiple search selection clearable options={spotList()} value={selectedSpotList} onChange={(e, {value}) => this.handleSpotFilter(value)} />
-                    <Checkbox style={{marginRight: 12}} label='Open positions only' toggle checked={openPositionsOnly} onChange={this.handleOpenPositionsToggle} />
-                    <Checkbox label={this.state.expandAll?'Collapse all':'Expand all'} toggle checked={this.state.expandAll} onChange={this.handleExpandAllToggle} />
+
+                    <Checkbox toggle style={{marginRight: 12}} label='Open positions only'  checked={openPositionsOnly} onChange={this.handleOpenPositionsToggle} />
                 </div>
 
-                {positions
-                    .filter(applyPositionFilters)
+                <div style={{marginBottom: 10, display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                    <div>
+                        <Label size='large' style={{background: totalProfit>=0?'green': 'red', color: '#fff'}}>
+                            Total P&L: {totalProfit}
+                        </Label>
+                        {!openPositionsOnly &&
+                            <Label size='large' style={{background: realizedProfit>=0?'green': 'red', color: '#fff'}}>
+                                Realized P&L: {realizedProfit}
+                            </Label>
+                        }
+                        <Label size='large' style={{background: unrealizedProfit>=0?'green': 'red', color: '#fff'}}>
+                            Unrealized P&L: {unrealizedProfit}
+                        </Label>
+                    </div>
+
+                    <Checkbox toggle label={this.state.expandAll?'Collapse all':'Expand all'} checked={this.state.expandAll} onChange={this.handleExpandAllToggle} />
+                </div>
+
+                {filteredPositions
                     .map((position) => <Position key={position.id} position={position} expandAll={this.state.expandAll}></Position>)
                 }
             </>
