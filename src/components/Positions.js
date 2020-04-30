@@ -56,7 +56,6 @@ class Positions extends React.Component{
         };
 
         let filteredPositions= positions.filter(applyPositionFilters);
-        // let totalProfit= filteredPositions.reduce((total, position) => total+position.positionProfit, 0);
 
         let {totalProfit, realizedProfit, unrealizedProfit}= filteredPositions.reduce(({totalProfit, realizedProfit, unrealizedProfit}, position) => {
             totalProfit+=position.positionProfit;
@@ -68,6 +67,8 @@ class Positions extends React.Component{
         return (
             <>
                 <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: 20}}>
+                    <Dropdown style={{marginRight: 12}} placeholder='Underlying' multiple search selection clearable options={spotList()} value={selectedSpotList} onChange={(e, {value}) => this.handleSpotFilter(value)} />
+
                     <Button.Group style={{marginRight: 12}}>
                         <Button toggle active={profitLossFilterValue=== 'all'} onClick={() => this.handleProfitLossFilter('all')}>All</Button>
                         <Button.Or />
@@ -75,8 +76,6 @@ class Positions extends React.Component{
                         <Button.Or />
                         <Button toggle active={profitLossFilterValue=== 'lossMaking'} onClick={() => this.handleProfitLossFilter('lossMaking')}>Loss making only</Button>
                     </Button.Group>
-
-                    <Dropdown style={{marginRight: 12}} placeholder='Underlying' multiple search selection clearable options={spotList()} value={selectedSpotList} onChange={(e, {value}) => this.handleSpotFilter(value)} />
 
                     <Checkbox toggle style={{marginRight: 12}} label='Open positions only'  checked={openPositionsOnly} onChange={this.handleOpenPositionsToggle} />
                 </div>
