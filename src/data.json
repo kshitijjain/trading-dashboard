@@ -257,7 +257,7 @@
         }
       ],
       "id": 2,
-      "positionProfit": -1000,
+      "positionProfit": 1000,
       "positionProfitPercentage": 0.5,
       "isOpen": true
     }
