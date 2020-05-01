@@ -16,7 +16,7 @@ class Position extends React.Component{
 
     componentDidMount(){
         this.setState({
-            isAccordianOpen: this.props.position.isOpen
+            isAccordianOpen: this.props.expandAll
         });
     }
 
@@ -38,45 +38,48 @@ class Position extends React.Component{
         let {position}= this.props;
 
         return (
-            <Accordion fluid styled style={{marginBottom: 20, border: position.positionProfit>=0?'1px solid green':'1px solid red'}}>
+            <Accordion fluid styled style={{marginBottom: 10, border: position.positionProfit>=0?'1px solid green':'1px solid red'}}>
                     <Accordion.Title
                     active={this.state.isAccordianOpen}
                     onClick={this.handleClick}
                     >
-                        <Grid >
-                            <Grid.Column mobile={16} tablet={8} computer={1}>
+                        <Grid style={{display: 'flex', alignItems: 'center'}}>
+                            <Grid.Column mobile={16} tablet={6} computer={5}>
                                 <Icon name='dropdown' />
-                            </Grid.Column>
-
-                            <Grid.Column mobile={16} tablet={8} computer={6}>
                                 {position.name}
-                                {position.isOpen && <Label horizontal color={'blue'} style={{marginLeft: 5}}>Open</Label>}
+                                {position.isOpen && <Label horizontal color={'teal'} style={{marginLeft: 5}}>Open</Label>}
                             </Grid.Column>
 
-                            <Grid.Column mobile={16} tablet={8} computer={2}>
+                            <Grid.Column style={{display: 'flex', alignItems: 'center'}} mobile={16} tablet={10} computer={3}>
                                 {position.spot}
-                            </Grid.Column>
-
-                            <Grid.Column mobile={16} tablet={8} computer={3}>
-                                <Label horizontal color='teal'>
+                                <Label horizontal color='teal' style={{marginLeft: 5}}>
                                     {position.strategy}
                                 </Label>
-
                             </Grid.Column>
 
-                            <Grid.Column mobile={16} tablet={8} computer={2}>
-                                {position.capital}
+                            <Grid.Column mobile={16} tablet={6} computer={2}>
+                                Capital: {position.capital}
                             </Grid.Column>
 
-                            <Grid.Column mobile={16} tablet={8} computer={2}>
-                                <Label horizontal style={{background: position.positionProfit>=0?'green':'red', borderColor: position.positionProfit>=0?'green':'red', color: '#fff'}} ribbon='right' >
-                                    {position.positionProfit} ({position.positionProfitPercentage}%)
-                                </Label>
+                            <Grid.Column style={{display: 'flex', justifyContent: 'flex-end'}} mobile={16} tablet={10} computer={6}>
+                                    {/*<Label horizontal style={{background: position.positionProfit>=0?'green':'red', borderColor: position.positionProfit>=0?'green':'red', color: '#fff'}}  >*/}
+                                    {/*    Profit {position.positionProfit} ({position.positionProfitPercentage.toFixed(2)}%)*/}
+                                    {/*</Label>*/}
+                                    {/*<Label horizontal color={'teal'} style={{marginLeft: 5}}>Brokerage {position.brokerage}</Label>*/}
+                                    <Label horizontal size='large' style={{background: position.netProfit>=0?'green':'red', borderColor: position.positionProfit>=0?'green':'red', color: '#fff'}}>
+                                        Net Profit {position.netProfit} ({position.netProfitPercentage.toFixed(2)}%)
+                                    </Label>
                             </Grid.Column>
                         </Grid>
                     </Accordion.Title>
 
                     <Accordion.Content active={this.state.isAccordianOpen} >
+                        <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                            <Label horizontal style={{background: position.positionProfit>=0?'green':'red', borderColor: position.positionProfit>=0?'green':'red', color: '#fff'}}  >
+                                Gross Profit {position.positionProfit} ({position.positionProfitPercentage.toFixed(2)}%)
+                            </Label>
+                            <Label horizontal color='blue' style={{marginLeft: 5}}>Brokerage {position.brokerage}</Label>
+                        </div>
                         <Contracts contracts= {position.contracts} />
                     </Accordion.Content>
                 </Accordion>

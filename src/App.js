@@ -35,7 +35,7 @@ class App extends React.Component{
     let {positions}= this.state;
 
     return (
-      <div style={{width:'80%', marginLeft: '10%', marginTop: 20}}>
+      <div className='container'>
         <Positions positions= {positions} refreshJsonData={this.refreshJsonData} />
       </div>
     );
