@@ -1,6 +1,5 @@
 import React from 'react';
 import {Checkbox, Dropdown, Button, Label} from 'semantic-ui-react';
-import './Positions.css';
 
 import Position from './Position';
 import spots from '../constants/spots.json';
