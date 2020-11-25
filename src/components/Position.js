@@ -11,7 +11,7 @@ class Position extends React.Component{
 
         this.state= {
             isAccordianOpen: false
-        }
+        };
     }
 
     componentDidMount(){

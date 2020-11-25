@@ -1,9 +1,9 @@
 {
   "totals": {
-    "totalProfit": 3093.2,
-    "totalPositions": 2,
-    "profitPositions": 2,
-    "lossPositions": 0
+    "totalProfit": 4618.4,
+    "totalPositions": 4,
+    "profitPositions": 3,
+    "lossPositions": 1
   },
   "positions": [
     {
@@ -11,7 +11,7 @@
       "spot": "USDINR",
       "strategy": "Iron Condor",
       "capital": 150000,
-      "positionProfit": 2400,
+      "positionProfit": 2445,
       "contracts": [
         {
           "type": "CE",
@@ -21,7 +21,7 @@
           "side": "Short",
           "lots": 15,
           "lotSize": 1000,
-          "contractProfit": 1050,
+          "contractProfit": 1095,
           "trades": [
             {
               "side": "sell",
@@ -32,7 +32,7 @@
             {
               "side": "buy",
               "lots": 15,
-              "averagePrice": 0.005,
+              "averagePrice": 0.002,
               "date": "23-04-2020"
             }
           ]
@@ -174,10 +174,356 @@
         }
       ],
       "id": 1,
-      "positionProfitPercentage": 1.6,
+      "positionProfitPercentage": 1.63,
       "brokerage": 212.4,
-      "netProfit": 2187.6,
-      "netProfitPercentage": 1.4584
+      "netProfit": 2232.6,
+      "netProfitPercentage": 1.4884
+    },
+    {
+      "name": "USDINR June Iron Condor",
+      "spot": "USDINR",
+      "strategy": "Iron Condor",
+      "capital": 150000,
+      "positionProfit": -525,
+      "contracts": [
+        {
+          "type": "CE",
+          "leg": "Initial Position",
+          "strike": 78,
+          "expiry": "28-04-2020",
+          "side": "Short",
+          "lots": 15,
+          "lotSize": 1000,
+          "contractProfit": -1875,
+          "trades": [
+            {
+              "side": "sell",
+              "lots": 15,
+              "averagePrice": 0.075,
+              "date": "17-04-2020"
+            },
+            {
+              "side": "buy",
+              "lots": 15,
+              "averagePrice": 0.2,
+              "date": "23-04-2020"
+            }
+          ]
+        },
+        {
+          "type": "CE",
+          "leg": "Initial Position",
+          "strike": 78.5,
+          "expiry": "28-04-2020",
+          "side": "Long",
+          "lots": 15,
+          "lotSize": 1000,
+          "notes": "Couldn't square off during adjustment due to illiquidiy.",
+          "trades": [
+            {
+              "side": "buy",
+              "lots": 15,
+              "averagePrice": 0.0375,
+              "date": "17-04-2020"
+            },
+            {
+              "side": "sell",
+              "lots": 15,
+              "averagePrice": 0,
+              "date": "28-04-2020"
+            }
+          ],
+          "contractProfit": -562.5
+        },
+        {
+          "type": "PE",
+          "leg": "Initial Position",
+          "strike": 76,
+          "expiry": "28-04-2020",
+          "side": "Short",
+          "lots": 15,
+          "lotSize": 1000,
+          "trades": [
+            {
+              "side": "sell",
+              "lots": 15,
+              "averagePrice": 0.1875,
+              "date": "17-04-2020"
+            },
+            {
+              "side": "buy",
+              "lots": 15,
+              "averagePrice": 0,
+              "date": "28-04-2020"
+            }
+          ],
+          "contractProfit": 2812.5
+        },
+        {
+          "type": "PE",
+          "leg": "Initial Position",
+          "strike": 75.5,
+          "expiry": "28-04-2020",
+          "side": "Long",
+          "lots": 15,
+          "lotSize": 1000,
+          "trades": [
+            {
+              "side": "buy",
+              "lots": 15,
+              "averagePrice": 0.085,
+              "date": "17-04-2020"
+            },
+            {
+              "side": "sell",
+              "lots": 15,
+              "averagePrice": 0,
+              "date": "28-04-2020"
+            }
+          ],
+          "contractProfit": -1275
+        },
+        {
+          "type": "CE",
+          "leg": "Adjustment",
+          "strike": 77,
+          "expiry": "28-04-2020",
+          "side": "Short",
+          "lots": 15,
+          "lotSize": 1000,
+          "trades": [
+            {
+              "side": "sell",
+              "lots": 15,
+              "averagePrice": 0.04,
+              "date": "23-04-2020"
+            },
+            {
+              "side": "sell",
+              "lots": 15,
+              "averagePrice": 0.04,
+              "date": "23-04-2020",
+              "notes": "Placed by mistake"
+            },
+            {
+              "side": "buy",
+              "lots": 15,
+              "averagePrice": 0.0425,
+              "date": "23-04-2020",
+              "notes": "Squared off immediately and corrected the mistake"
+            },
+            {
+              "side": "buy",
+              "lots": 15,
+              "averagePrice": 0,
+              "date": "28-04-2020"
+            }
+          ],
+          "contractProfit": 562.5
+        },
+        {
+          "type": "CE",
+          "leg": "Adjustment",
+          "strike": 77.5,
+          "expiry": "28-04-2020",
+          "side": "Long",
+          "lots": 15,
+          "lotSize": 1000,
+          "trades": [
+            {
+              "side": "buy",
+              "lots": 15,
+              "averagePrice": 0.0125,
+              "date": "23-04-2020"
+            },
+            {
+              "side": "sell",
+              "lots": 15,
+              "averagePrice": 0,
+              "date": "28-04-2020"
+            }
+          ],
+          "contractProfit": -187.5
+        }
+      ],
+      "id": 2,
+      "positionProfitPercentage": -0.35,
+      "brokerage": 212.4,
+      "netProfit": -737.4,
+      "netProfitPercentage": -0.4916
+    },
+    {
+      "name": "Nifty July Iron Condor",
+      "spot": "Nifty",
+      "strategy": "Iron Condor",
+      "capital": 150000,
+      "positionProfit": 2430,
+      "contracts": [
+        {
+          "type": "CE",
+          "leg": "Initial Position",
+          "strike": 78,
+          "expiry": "28-04-2020",
+          "side": "Short",
+          "lots": 15,
+          "lotSize": 1000,
+          "contractProfit": 1080,
+          "trades": [
+            {
+              "side": "sell",
+              "lots": 15,
+              "averagePrice": 0.075,
+              "date": "17-04-2020"
+            },
+            {
+              "side": "buy",
+              "lots": 15,
+              "averagePrice": 0.003,
+              "date": "23-04-2020"
+            }
+          ]
+        },
+        {
+          "type": "CE",
+          "leg": "Initial Position",
+          "strike": 78.5,
+          "expiry": "28-04-2020",
+          "side": "Long",
+          "lots": 15,
+          "lotSize": 1000,
+          "notes": "Couldn't square off during adjustment due to illiquidiy.",
+          "trades": [
+            {
+              "side": "buy",
+              "lots": 15,
+              "averagePrice": 0.0375,
+              "date": "17-04-2020"
+            },
+            {
+              "side": "sell",
+              "lots": 15,
+              "averagePrice": 0,
+              "date": "28-04-2020"
+            }
+          ],
+          "contractProfit": -562.5
+        },
+        {
+          "type": "PE",
+          "leg": "Initial Position",
+          "strike": 76,
+          "expiry": "28-04-2020",
+          "side": "Short",
+          "lots": 15,
+          "lotSize": 1000,
+          "trades": [
+            {
+              "side": "sell",
+              "lots": 15,
+              "averagePrice": 0.1875,
+              "date": "17-04-2020"
+            },
+            {
+              "side": "buy",
+              "lots": 15,
+              "averagePrice": 0,
+              "date": "28-04-2020"
+            }
+          ],
+          "contractProfit": 2812.5
+        },
+        {
+          "type": "PE",
+          "leg": "Initial Position",
+          "strike": 75.5,
+          "expiry": "28-04-2020",
+          "side": "Long",
+          "lots": 15,
+          "lotSize": 1000,
+          "trades": [
+            {
+              "side": "buy",
+              "lots": 15,
+              "averagePrice": 0.085,
+              "date": "17-04-2020"
+            },
+            {
+              "side": "sell",
+              "lots": 15,
+              "averagePrice": 0,
+              "date": "28-04-2020"
+            }
+          ],
+          "contractProfit": -1275
+        },
+        {
+          "type": "CE",
+          "leg": "Adjustment",
+          "strike": 77,
+          "expiry": "28-04-2020",
+          "side": "Short",
+          "lots": 15,
+          "lotSize": 1000,
+          "trades": [
+            {
+              "side": "sell",
+              "lots": 15,
+              "averagePrice": 0.04,
+              "date": "23-04-2020"
+            },
+            {
+              "side": "sell",
+              "lots": 15,
+              "averagePrice": 0.04,
+              "date": "23-04-2020",
+              "notes": "Placed by mistake"
+            },
+            {
+              "side": "buy",
+              "lots": 15,
+              "averagePrice": 0.0425,
+              "date": "23-04-2020",
+              "notes": "Squared off immediately and corrected the mistake"
+            },
+            {
+              "side": "buy",
+              "lots": 15,
+              "averagePrice": 0,
+              "date": "28-04-2020"
+            }
+          ],
+          "contractProfit": 562.5
+        },
+        {
+          "type": "CE",
+          "leg": "Adjustment",
+          "strike": 77.5,
+          "expiry": "28-04-2020",
+          "side": "Long",
+          "lots": 15,
+          "lotSize": 1000,
+          "trades": [
+            {
+              "side": "buy",
+              "lots": 15,
+              "averagePrice": 0.0125,
+              "date": "23-04-2020"
+            },
+            {
+              "side": "sell",
+              "lots": 15,
+              "averagePrice": 0,
+              "date": "28-04-2020"
+            }
+          ],
+          "contractProfit": -187.5
+        }
+      ],
+      "id": 3,
+      "positionProfitPercentage": 1.62,
+      "brokerage": 212.4,
+      "netProfit": 2217.6,
+      "netProfitPercentage": 1.4784
     },
     {
       "name": "USDINR May Iron Condor",
@@ -262,7 +608,7 @@
           "isOpen": true
         }
       ],
-      "id": 2,
+      "id": 5,
       "positionProfit": 1000,
       "positionProfitPercentage": 0.5,
       "isOpen": true,

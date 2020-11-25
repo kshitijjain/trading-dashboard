@@ -9,7 +9,7 @@ class Positions extends React.Component{
         super(props);
 
         this.state= {
-            expandAll: true,
+            expandAll: false,
             showOpenPositions: false,
             selectedSpotList: [],
             profitLossFilterValue: 'all'
@@ -35,7 +35,7 @@ class Positions extends React.Component{
 
     render(){
         let {positions}= this.props;
-        let {selectedSpotList, showOpenPositions: showOpenPositions, profitLossFilterValue}= this.state;
+        let {selectedSpotList, showOpenPositions, profitLossFilterValue}= this.state;
 
         let spotList= () => (
             spots.map(spot => ({
@@ -45,7 +45,7 @@ class Positions extends React.Component{
             }))
         );
 
-        let applyPositionFilters= (position) => {
+        let applyPositionFilters= position => {
             let openPositionFilter= () => showOpenPositions?position.isOpen:!position.isOpen;
             let spotFilter= () => (selectedSpotList.length=== 0 || selectedSpotList.includes(position.spot));
             let profitLossFilter= () => (profitLossFilterValue==='all'?true:(profitLossFilterValue=== 'profitable'?position.positionProfit>=0:position.positionProfit<=0));
@@ -79,7 +79,7 @@ class Positions extends React.Component{
                     <Dropdown style={{marginRight: 12}} placeholder='Underlying' multiple search selection clearable options={spotList()} value={selectedSpotList} onChange={(e, {value}) => this.handleSpotFilter(value)} />
 
                     <Button.Group style={{marginRight: 12}}>
-                        <Button className={profitLossFilterValue==='all' && 'active-button'} toggle active={profitLossFilterValue=== 'all'} onClick={() => this.handleProfitLossFilter('all')}>All</Button>
+                        <Button toggle active={profitLossFilterValue=== 'all'} onClick={() => this.handleProfitLossFilter('all')}>All</Button>
                         <Button.Or />
                         <Button  toggle active={profitLossFilterValue=== 'profitable'} onClick={() => this.handleProfitLossFilter('profitable')}>Profitable only</Button>
                         <Button.Or />
@@ -108,7 +108,7 @@ class Positions extends React.Component{
                         {!showOpenPositions &&
                             <Label size='large'
                                    style={{background: netRealizedProfit >= 0 ? 'green' : 'red', color: '#fff'}}>
-                                Net realized P&L: {netRealizedProfit}
+                                Net realized P&L: {Math.round(netRealizedProfit*100)/100}
                             </Label>
                         }
                     </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {List, Modal, Header} from 'semantic-ui-react';
+import {List, Modal} from 'semantic-ui-react';
 
 import Trade from "./Trade";
 

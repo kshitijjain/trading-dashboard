@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import Positions from './components/Positions';
 import './App.css';
 
@@ -23,11 +22,6 @@ class App extends React.Component{
   }
 
   fetchJsonData= async () => {
-    // let {status, data}= await axios.get('http://192.168.0.26:3001/db');
-    // if(status=== 200){
-    //   this.setState({positions: data.positions});
-    // }
-
     this.setState({positions});
   }
 
